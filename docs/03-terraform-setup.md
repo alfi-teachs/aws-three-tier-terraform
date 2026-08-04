@@ -68,7 +68,25 @@ terraform {
 # Step 2 - Create provider.tf
 
 This file tells Terraform which cloud provider to use and which AWS region to deploy resources in.
+```bash
+provider "aws" {
 
+  region = var.aws_region
+
+  default_tags {
+
+    tags = {
+
+      Project     = var.project_name
+      Environment = var.environment
+      ManagedBy   = "Terraform"
+
+    }
+
+  }
+
+}
+```
 ---
 
 # Step 3 - Create variables.tf
@@ -77,6 +95,32 @@ Variables make Terraform configurations reusable and easier to maintain.
 
 Instead of hardcoding values, variables allow customization for different environments.
 
+```bash
+variable "aws_region" {
+
+  description = "AWS Region"
+
+  type = string
+
+}
+
+variable "project_name" {
+
+  description = "Project Name"
+
+  type = string
+
+}
+
+variable "environment" {
+
+  description = "Environment"
+
+  type = string
+
+}
+```
+
 ---
 
 # Step 4 - Create terraform.tfvars
@@ -84,6 +128,14 @@ Instead of hardcoding values, variables allow customization for different enviro
 This file stores the actual values assigned to variables declared in variables.tf.
 
 Keeping values separate from the configuration improves readability and flexibility.
+
+```bash
+aws_region  = "ap-south-1"
+
+project_name = "aws-three-tier"
+
+environment = "dev"
+```
 
 ---
 
