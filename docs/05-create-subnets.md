@@ -105,6 +105,7 @@ Private Subnet B
 
 # Terraform File
 variables.tf
+
 ```bash
 variable "public_subnet_1_cidr" {
   description = "CIDR for Public Subnet 1"
@@ -135,7 +136,7 @@ variable "availability_zone_2" {
   description = "Secondary Availability Zone"
   type        = string
 }
-
+```
 terraform.tfvars
 
 ```bash
