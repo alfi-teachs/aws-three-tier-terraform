@@ -271,10 +271,10 @@ Interview Questions
 
 Make sure you can answer these before we continue:
 
-What is a subnet?
-What is the difference between a public and a private subnet?
-Why do we use multiple Availability Zones?
-Why do public subnets use map_public_ip_on_launch = true?
-Why are databases usually placed in private subnets?
-How does Terraform know which VPC the subnet belongs to?
-Why did we choose /24 CIDR blocks for the subnets?
+- What is a subnet?
+- What is the difference between a public and a private subnet?
+- Why do we use multiple Availability Zones?
+- Why do public subnets use map_public_ip_on_launch = true?
+- Why are databases usually placed in private subnets?
+- How does Terraform know which VPC the subnet belongs to?
+- Why did we choose /24 CIDR blocks for the subnets?
