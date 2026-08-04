@@ -135,7 +135,9 @@ variable "availability_zone_2" {
   description = "Secondary Availability Zone"
   type        = string
 }
+
 terraform.tfvars
+
 ```bash
 aws_region = "ap-south-1"
 
