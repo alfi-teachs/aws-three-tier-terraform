@@ -158,7 +158,11 @@ Validate Terraform configuration
 ```bash
 terraform validate
 ```
-
+Git Commit
+```bash
+git add .
+git commit -m "feat: configure Terraform provider and variables"
+```
 ---
 
 # Expected Result
