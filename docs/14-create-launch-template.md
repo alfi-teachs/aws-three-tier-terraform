@@ -203,7 +203,11 @@ Verify:
 - Use tags for easy resource identification.
 
 ---
+Interview Questions
 
-# Next Step
-
-Create an Auto Scaling Group.
+- What is a Launch Template?
+- Why is a Launch Template used with an Auto Scaling Group?
+- What configuration is stored in a Launch Template?
+- Why is user_data Base64 encoded?
+- Can multiple Auto Scaling Groups use the same Launch Template?
+- What happens when you update a Launch Template?
