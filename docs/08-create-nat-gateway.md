@@ -145,6 +145,12 @@ terraform plan
 
 terraform apply
 ```
+Git Commit
+```bash
+git add .
+
+git commit -m "feat(network): create NAT Gateway"
+```
 ---
 
 # Verification
