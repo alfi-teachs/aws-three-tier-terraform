@@ -6,6 +6,47 @@ This project demonstrates how to provision a production-style AWS Three-Tier Inf
 
 The infrastructure follows Infrastructure as Code (IaC) best practices and includes networking, compute, load balancing, database, and remote state management.
 
+# Phase 1 - Project Setup
+──────────────────────────────────────────
+✅ 01 Project Overview
+✅ 02 Prerequisites
+✅ 03 Terraform Setup
+
+# Phase 2 - Networking
+──────────────────────────────────────────
+✅ 04 VPC
+✅ 05 Public & Private Subnets
+✅ 06 Internet Gateway
+✅ 07 Route Tables
+✅ 08 NAT Gateway
+✅ 09 Security Groups
+
+# Phase 3 - Compute
+──────────────────────────────────────────
+✅ 10 EC2 Instances
+
+⬜ 11 Application Load Balancer
+⬜ 12 Target Group
+⬜ 13 Listener
+⬜ 14 Launch Template
+⬜ 15 Auto Scaling Group
+
+# Phase 4 - Database
+──────────────────────────────────────────
+⬜ 16 RDS
+⬜ 17 DB Subnet Group
+
+# Phase 5 - Terraform
+──────────────────────────────────────────
+⬜ 18 Outputs
+⬜ 19 Remote Backend (S3 + DynamoDB)
+
+# Phase 6 - Validation
+──────────────────────────────────────────
+⬜ 20 Testing
+⬜ 21 Cleanup
+⬜ 22 GitHub Documentation
+
 ---
 
 # Architecture
