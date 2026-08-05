@@ -181,3 +181,12 @@ Verify:
 - Use one NAT Gateway per Availability Zone in production environments.
 
 ---
+Interview Questions
+
+- What is a NAT Gateway?
+- Why is a NAT Gateway placed in a public subnet?
+- Why does a NAT Gateway require an Elastic IP?
+- What is the difference between an Internet Gateway and a NAT Gateway?
+- Can resources in a private subnet receive inbound internet traffic through a NAT Gateway?
+- Why do private route tables point to a NAT Gateway instead of an Internet Gateway?
+- Why might a production architecture use one NAT Gateway per Availability Zone?
