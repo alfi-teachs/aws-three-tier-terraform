@@ -203,7 +203,10 @@ Verify:
 - Correct subnet associations
 
 ---
-
-# Next Step
-
-Create NAT Gateway.
+Interview Questions
+- What is a Route Table?
+- Why is 0.0.0.0/0 used?
+- Why do we associate Route Tables with subnets?
+- Can two subnets share the same Route Table?
+- Why do public and private subnets use different Route Tables?
+- Why don't private Route Tables point to the Internet Gateway?
