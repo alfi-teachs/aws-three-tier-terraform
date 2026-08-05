@@ -104,6 +104,45 @@ resource "aws_autoscaling_group" "main" {
 }
 ```
 
+Private Subnets
+
+vpc_zone_identifier = [
+
+  aws_subnet.private_subnet_1.id,
+
+  aws_subnet.private_subnet_2.id
+
+]
+
+The ASG launches EC2 instances across both private subnets for high availability.
+
+Target Group
+
+target_group_arns = [
+
+  aws_lb_target_group.main.arn
+
+]
+
+Every EC2 instance launched by the ASG is automatically registered with the ALB Target Group.
+
+Health Check
+
+health_check_type = "ELB"
+
+The ALB health checks determine whether an instance is healthy.
+
+If an instance fails, the ASG terminates it and launches a replacement.
+
+Launch Template
+
+launch_template {
+
+  id = aws_launch_template.main.id
+
+  version = "$Latest"
+
+}
 ---
 
 # Commands
@@ -113,6 +152,13 @@ terraform fmt
 terraform plan
 
 terraform apply
+```
+Git Commit
+
+```bash
+git add .
+
+git commit -m "feat(asg): create auto scaling group"
 ```
 ---
 
@@ -147,4 +193,12 @@ Verify:
 - Use Launch Templates instead of Launch Configurations.
 
 ---
+Interview Questions
 
+- What is an Auto Scaling Group?
+- Why do we use a Launch Template with an ASG?
+- What is the difference between Desired Capacity, Minimum Size, and Maximum Size?
+- Why is health_check_type set to "ELB"?
+- What happens if an EC2 instance becomes unhealthy?
+- How does the ASG distribute instances across Availability Zones?
+- Why is the Target Group attached to the ASG?
