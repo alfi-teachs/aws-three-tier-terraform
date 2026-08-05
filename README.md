@@ -5,7 +5,7 @@
 This project demonstrates how to provision a production-style AWS Three-Tier Infrastructure using Terraform.
 
 The infrastructure follows Infrastructure as Code (IaC) best practices and includes networking, compute, load balancing, database, and remote state management.
-
+```bash
 # Phase 1 - Project Setup
 ──────────────────────────────────────────
 ✅ 01 Project Overview
@@ -46,7 +46,7 @@ The infrastructure follows Infrastructure as Code (IaC) best practices and inclu
 ⬜ 20 Testing
 ⬜ 21 Cleanup
 ⬜ 22 GitHub Documentation
-
+```
 ---
 
 # Architecture
