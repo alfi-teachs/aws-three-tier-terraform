@@ -250,7 +250,11 @@ Verify:
 - Configure health checks.
 
 ---
-
-# Next Step
-
-Create a Target Group.
+Interview Questions
+- What is an Application Load Balancer?
+- Why is an ALB deployed in public subnets?
+- What is the difference between an ALB and a Network Load Balancer?
+- What does internal = false mean?
+- Why should an ALB span multiple Availability Zones?
+- Can an ALB directly connect to an RDS instance?
+- Which OSI layer does an ALB operate on?
