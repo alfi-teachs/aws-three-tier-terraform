@@ -297,9 +297,7 @@ Each document explains:
 
 # 👨‍💻 Author
 
-**Alfia Ali**
-
-📧 flyalfia@gmail.com
+**Alfia**
 
 🔗 GitHub: https://github.com/alfi-teachs
 
