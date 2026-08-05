@@ -106,4 +106,10 @@ Verify:
 - Keep Internet Gateway configuration separate from Route Tables.
 
 ---
-
+Interview Questions
+What is an Internet Gateway?
+Why do we need an Internet Gateway?
+Can a VPC have multiple Internet Gateways?
+Which resources require an Internet Gateway?
+Does an Internet Gateway automatically provide internet access to all subnets? Why or why not?
+What is the difference between an Internet Gateway and a NAT Gateway?
