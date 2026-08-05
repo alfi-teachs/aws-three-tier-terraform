@@ -1,3 +1,29 @@
+hat should be cleaned up?
+1. Remove standalone EC2 instances ✅
+
+Destroy only the EC2 instances:
+```bash
+terraform destroy -target=aws_instance.web1
+terraform destroy -target=aws_instance.web2
+```
+if you removed them from the configuration, simply run:
+```bash
+terraform plan
+terraform apply
+```
+Don't delete these resources
+
+Keep all of these:
+```bash
+✅ VPC
+✅ Public Subnets
+✅ Private Subnets
+✅ Internet Gateway
+✅ NAT Gateway
+✅ Route Tables
+✅ Security Groups
+```
+
 architecture
 ```bash
 
