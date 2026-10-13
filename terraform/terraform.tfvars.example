@@ -1,0 +1,3 @@
+project_name = "aws-three-tier"
+environment = "dev"
+region = "ap-south-1"
