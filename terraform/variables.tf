@@ -13,3 +13,38 @@ variable "region" {
   type        = string
   default     = "ap-south-1"
 }
+variable "vpc_cidr" {
+  description = "The CIDR block for the VPC"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+variable "public_subnet_1" {
+  description = "The CIDR block for the public subnet 1"
+  type        = string
+  default     = "10.0.1.0/24"
+}
+variable "public_subnet_2" {
+  description = "The CIDR block for the public subnet"
+  type        = string
+  default     = "10.0.1.0/24"
+}
+variable "private_subnet_1" {
+  description = "The CIDR block for the private subnet 1"
+  type        = string
+  default     = "10.0.11.0/24"
+}
+variable "private_subnet_2" {
+  description = "The CIDR block for the private subnet 2"
+  type        = string
+  default     = "10.0.12.0/24"
+}
+variable "private_db_subnet_1" {
+  description = "The CIDR block for the private database subnet 1"
+  type        = string
+  default     = "10.0.21.0/24"
+}
+variable "private_db_subnet_2" {
+  description = "The CIDR block for the private database subnet 2"
+  type        = string
+  default     = "10.0.22.0/24"
+}
