@@ -58,3 +58,13 @@ variable "db_port" {
   type        = number
   default     = 3306
 }
+variable "app_ami_id" {
+  description = "AMI ID for application EC2 instances in the selected AWS region"
+  type        = string
+  default     = "ami-REPLACE_WITH_VALID_AMI_ID"
+}
+variable "app_instance_type" {
+  description = "EC2 instance type for the application tier"
+  type        = string
+  default     = "t3.micro"
+}

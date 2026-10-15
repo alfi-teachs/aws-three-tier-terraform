@@ -299,3 +299,52 @@ resource "aws_lb_listener" "http" {
     }
   )
 }
+resource "aws_launch_template" "app" {
+  name_prefix   = "${var.project_name}-${var.environment}-app-lt-"
+  image_id      = var.app_ami_id
+  instance_type = var.app_instance_type
+
+  vpc_security_group_ids = [aws_security_group.app.id]
+
+  user_data = base64encode(<<-EOF
+                #!/bin/bash
+                dnf update -y
+                dnf install -y docker
+                systemctl enable --now docker
+                docker run -d --restart unless-stopped -p 3000:80 nginx:alpine
+                EOF
+
+  )
+  tag_specifications {
+    resource_type = "instance"
+    tags = merge(
+      local.common_tags,
+      {
+        Name = "${var.project_name}-${var.environment}-app-instance"
+      }
+    )
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
+
+}
+resource "aws_autoscaling_group" "app" {
+  name                = "${var.project_name}-${var.environment}-app-asg"
+  max_size            = 2
+  min_size            = 1
+  desired_capacity    = 1
+  vpc_zone_identifier = [aws_subnet.private_1.id, aws_subnet.private_2.id]
+  target_group_arns   = [aws_lb_target_group.app.arn]
+  launch_template {
+    id      = aws_launch_template.app.id
+    version = "$Latest"
+  }
+  health_check_type         = "ELB"
+  health_check_grace_period = 180
+  tag {
+    key                 = "Name"
+    value               = "${var.project_name}-${var.environment}-app-instance"
+    propagate_at_launch = true
+  }
+}
