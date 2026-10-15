@@ -34,9 +34,21 @@ No AWS resources will be created during this phase.
 
 ## Progress Checklist
 
-- [ ] Document the application tier
-- [ ] Configure an EC2 launch template
-- [ ] Configure an Auto Scaling Group
-- [ ] Attach the Auto Scaling Group to the ALB target group
-- [ ] Validate Terraform locally
+- ## Progress Checklist
+
+- [x] Document the application tier
+- [x] Configure an EC2 launch template
+- [x] Configure an Auto Scaling Group
+- [x] Attach the Auto Scaling Group to the ALB target group
+- [x] Validate Terraform locally
 - [ ] Commit and push changes to GitHub
+
+## Validation Notes
+
+The Terraform configuration passed local validation using `terraform validate`.
+
+No AWS resources have been deployed. The AMI ID must be supplied before planning or deployment, and the application health-check endpoint must be implemented and tested before the application is considered operational.
+
+## Cost Considerations
+
+The launch template and Auto Scaling Group can create billable EC2 resources when deployed. This project is currently configuration-only; no AWS infrastructure has been created.
