@@ -48,3 +48,13 @@ variable "private_db_subnet_2" {
   type        = string
   default     = "10.0.22.0/24"
 }
+variable "app_port" {
+  description = "port on which application runs"
+  type        = number
+  default     = 3000
+}
+variable "db_port" {
+  description = "Port used by the MySQL database"
+  type        = number
+  default     = 3306
+}

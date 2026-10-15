@@ -164,3 +164,78 @@ resource "aws_route_table_association" "private_db_2" {
   subnet_id      = aws_subnet.private_db_2.id
   route_table_id = aws_route_table.private_db.id
 }
+resource "aws_security_group" "alb" {
+  name        = "${var.project_name}-${var.environment}-alb-sg"
+  description = "Security group for ALB"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = merge(
+    local.common_tags,
+    {
+      Name = "${var.project_name}-${var.environment}-alb-sg"
+    }
+  )
+}
+resource "aws_security_group" "app" {
+  name        = "${var.project_name}-${var.environment}-app-sg"
+  description = "Security group for application servers"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port   = var.app_port
+    to_port     = var.app_port
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = merge(
+    local.common_tags,
+    {
+      Name = "${var.project_name}-${var.environment}-app-sg"
+    }
+  )
+}
+resource "aws_security_group" "db" {
+  name        = "${var.project_name}-${var.environment}-db-sg"
+  description = "Mysql traffic only from application servers"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port       = var.db_port
+    to_port         = var.db_port
+    protocol        = "tcp"
+    security_groups = [aws_security_group.app.id]
+
+  }
+  egress {
+    description = "Allow all outbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = merge(
+    local.common_tags,
+    {
+      Name = "${var.project_name}-${var.environment}-db-sg"
+    }
+  )
+}
