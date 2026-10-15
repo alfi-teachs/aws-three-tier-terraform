@@ -1,76 +1,102 @@
 # AWS Three-Tier Architecture with Terraform
 
+A hands-on DevOps portfolio project focused on designing AWS infrastructure using Terraform and automating configuration checks with GitHub Actions.
+
+**Status:** Terraform configuration and documentation completed through the final review phase. No AWS resources have been deployed.
+
 ## Project Overview
 
-Build a three-tier web application on AWS using Terraform.
-This project demonstrates Infrastructure as Code (IaC), networking,
-security, deployment, monitoring, and CI/CD.
+This project demonstrates how to define a three-tier AWS architecture as Infrastructure as Code (IaC). It covers network design, security groups, load balancing, application-tier scaling, remote-state planning, and automated Terraform validation.
 
-## Architecture
+The project is intended for learning and portfolio presentation. Live AWS deployment and end-to-end infrastructure testing have not been performed.
 
-### Tier 1: Presentation
-- Application Load Balancer (ALB)
-- Public subnets across Availability Zones
-
-### Tier 2: Application
-- Amazon EC2 instances
-- Auto Scaling Group
-- Private application subnets
-
-### Tier 3: Database
-- Amazon RDS for MySQL
-- Private database subnets
-- Restricted database access
 
 ## Technology Stack
 
-- AWS
+- AWS and Amazon VPC
 - Terraform
 - Git and GitHub
-- Linux and Bash
-- Amazon VPC, EC2, ALB, and RDS
-- IAM and security groups
-- Amazon S3 for Terraform state
-- Amazon CloudWatch
 - GitHub Actions
+- EC2 launch templates and Auto Scaling Groups
+- Application Load Balancer and target groups
+- Terraform variables, outputs, and provider configuration
+- AWS security groups and route tables
 
-## Implementation Plan
+## Work Completed
 
-- [ ] Phase 1: Prerequisites and project setup
-- [ ] Phase 2: VPC and networking
-- [ ] Phase 3: IAM and security groups
-- [ ] Phase 4: Load balancer and application tier
-- [ ] Phase 5: Database and application integration
-- [ ] Phase 6: Remote Terraform state
-- [ ] Phase 7: GitHub Actions CI/CD
-- [ ] Phase 8: Monitoring and security verification
-- [ ] Phase 9: Testing and documentation
-- [ ] Phase 10: AWS cleanup
+- Created and organized the Terraform project structure.
+- Defined the VPC and six subnet configurations across two Availability Zones.
+- Configured the Internet Gateway, route tables, and subnet associations in Terraform.
+- Defined separate security groups for the load balancer, application tier, and database tier.
+- Defined the Application Load Balancer, listener, and target group.
+- Defined the EC2 launch template and Auto Scaling Group.
+- Added Terraform variables, outputs, provider requirements, and version constraints.
+- Documented database-tier design and remote-state considerations.
+- Created a GitHub Actions workflow for Terraform formatting, initialization without a backend, and validation.
+- Created phase-by-phase documentation.
 
-## Security
+## Validation
 
-- Never commit AWS credentials or passwords.
-- Never commit Terraform state files.
-- Use least-privilege IAM permissions.
-- Keep application servers and the database in private subnets.
-- Review Terraform plans before applying changes.
+The following checks have succeeded:
 
-## Cost Management
+- `terraform fmt -check -recursive`
+- `terraform init -backend=false`
+- `terraform validate`
+- GitHub Actions **Terraform CI** workflow
 
-AWS resources can incur charges while running. We will use
-development-sized resources where practical and verify cleanup
-after testing.
+[View GitHub Actions](https://github.com/alfi-teachs/aws-three-tier-terraform/actions)
 
-## Current Status
+These checks validate the configuration; they do not confirm successful deployment or operation in AWS.
 
-Project folders created. Documentation setup in progress.
-No AWS infrastructure has been deployed.
+## Repository Structure
 
-## Learning Outcomes
+```text
+aws-three-tier-terraform/
+├── .github/workflows/
+│   └── terraform-ci.yml
+├── docs/
+│   ├── 01-prerequisites/
+│   ├── 02-terraform-setup/
+│   ├── 03-vpc-networking/
+│   ├── 04-security-groups/
+│   ├── 05-load-balancer/
+│   ├── 06-application-tier/
+│   ├── 07-database-tier/
+│   ├── 08-remote-state/
+│   ├── 09-github-actions/
+│   └── 10-final-review/
+└── terraform/
+    ├── main.tf
+    ├── variables.tf
+    ├── outputs.tf
+    ├── providers.tf
+    ├── versions.tf
+    ├── terraform.tfvars.example
+    └── README.md
+```
 
-- Build infrastructure using Terraform.
-- Design a secure three-tier AWS architecture.
-- Configure Terraform variables, outputs, and modules.
-- Automate validation using GitHub Actions.
-- Test application health and monitor AWS resources.
-- Document deployment, troubleshooting, and cleanup.
+## Not Yet Implemented or Verified
+
+- RDS MySQL resource creation and application-to-database integration
+- Remote S3 backend configuration and initialization
+- CloudWatch monitoring and alarms
+- Live application health checks and end-to-end tests
+- Deployment to AWS
+
+Before any future deployment, the AMI, application health-check path, and private-subnet access to packages and container images must be reviewed.
+
+## Security and Cost
+
+- No AWS infrastructure has been deployed.
+- AWS credentials and secrets must never be committed to the repository.
+- Terraform state and saved plan files must remain out of version control.
+- A future deployment must include an IAM, security, and cost review.
+- Services such as EC2, ALB, RDS, and NAT Gateway can incur charges if provisioned.
+
+## Documentation
+
+See the [`docs/`](docs/) directory for the detailed steps and explanations for each project phase.
+
+## Disclaimer
+
+This is a learning and portfolio project. The Terraform configuration has passed formatting and validation checks but has not been tested through a live AWS deployment. Further engineering and verification may be required before production use.
